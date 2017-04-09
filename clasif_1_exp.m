@@ -1,7 +1,8 @@
 function [clasificacion]=clasif_1_exp(musano,sigmasano,murd,sigmard,theta,muestra)
-
-    ver_sano=mvnpdf(muestra(1:16),musano,sigmasano); 
-    ver_rd=mvnpdf(muestra(1:16),murd,sigmard);
+    
+    index_caract=length(muestra)-1;
+    ver_sano=mvnpdf(muestra(1:index_caract),musano,sigmasano); 
+    ver_rd=mvnpdf(muestra(1:index_caract),murd,sigmard);
     
     proporcion=ver_rd/ver_sano;
     

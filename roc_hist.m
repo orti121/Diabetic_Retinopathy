@@ -5,10 +5,11 @@ TPR=zeros(size(rango));
 FPR=zeros(size(rango));
 
 for i=1:length(rango)
-[clasificacion,real]=clasificar_hist_v3(binranges_sano,binranges_rd,probs_sano,probs_rd,priori_sano,priori_rd,rango(i),prueba);
+[clasificacion,real]=clasificar_hist_v3(binranges_sano,binranges_rd,probs_sano,probs_rd,rango(i),prueba);
 [TPR(i),FPR(i)]=tpr_fpr(real,clasificacion);
 end
 
+figure(4)
 plot(FPR,TPR,color)
 title('Curva ROC')
 xlabel('FPR')

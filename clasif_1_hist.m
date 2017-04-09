@@ -1,18 +1,19 @@
 function [clasificacion]=clasif_1_hist(bins_sano,bins_rd,prob_sano,prob_rd,theta,muestra)
 % Clasifica una muestra
-% bins_sano y bins_rd: Matrices de 16xN que contienen los bins de los
+% bins_sano y bins_rd: Matrices de index_caractxN que contienen los bins de los
 % histogramas para cada característica, con N=cantidad de bins.
 
-% prob_sano y prob_rd: Matrices de 16xN que contienen la probabilidad
+% prob_sano y prob_rd: Matrices de index_caractxN que contienen la probabilidad
 % asociada a cada bin y característica.
 
 % Entrega clasificación y valor real para su posterior uso en la curva ROC.
+    index_caract=length(muestra)-1;
 
-    probs_sano=zeros(1,16); %Inicializar la probabilidad asociada a cada característica.
-    probs_rd=zeros(1,16);
+    probs_sano=zeros(1,index_caract); %Inicializar la probabilidad asociada a cada característica.
+    probs_rd=zeros(1,index_caract);
     
 
-    for i=1:16
+    for i=1:index_caract
         % sano
         index_sano=findbin(muestra(i),bins_sano(i,:));
         probs_sano(i)=prob_sano(i,index_sano);

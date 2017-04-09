@@ -10,10 +10,10 @@ function [clasificacion, real]=clasificar_hist_v3(bins_sano,bins_rd,prob_sano,pr
 
 % Se obtienen las clasificaciones y valores reales para su uso en la
 % elaboración de la curva ROC.
-
+index_class=length(prueba(1,:));
 cantidad_muestras=length(prueba(:,1));
 
-real=prueba(:,17);
+real=prueba(:,index_class);
 clasificacion=zeros(size(real));
 
 
@@ -22,5 +22,5 @@ for i=1:cantidad_muestras
    muestra=prueba(i,:);
    [clasificacion(i)]=clasif_1_hist(bins_sano,bins_rd,prob_sano,prob_rd,umbral,muestra);
 end
-    
+    plot(clasificacion-real)
 end
